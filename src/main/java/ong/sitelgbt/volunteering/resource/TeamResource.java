@@ -43,7 +43,7 @@ public class TeamResource {
     public ResponseEntity<Team> deactivate(@PathVariable("id") Long id) {
         final Optional<Team> team = service.findById(id);
 
-        if (team.isEmpty()) {
+        if (!team.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
@@ -54,7 +54,7 @@ public class TeamResource {
     public ResponseEntity delete(@PathVariable("id") Long id) {
         final Optional<Team> team = service.findById(id);
 
-        if (team.isEmpty()) {
+        if (!team.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
