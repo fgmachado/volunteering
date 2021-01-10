@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +23,21 @@ public class AvailabilityResource {
         return service.findAllByVoluntary(voluntaryId);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<Availability> findById(@PathVariable("id") Long voluntaryId, @PathVariable("availabilityId") Long availabilityId) {
+        final Optional<Availability> availability = service.findbyId(availabilityId);
+
+        if (!availability.isPresent()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(availability.get());
+    }
+
     @PostMapping
-    public Availability add(@RequestBody Availability availability) {
-        return service.save(availability);
+    public ResponseEntity<String> add(@RequestBody Availability availability) {
+        final Availability entity = service.save(availability);
+        return ResponseEntity.created(URI.create("/volunteers/" + availability.getVoluntary().getId() + "/availabilities/" + entity.getId())).build();
     }
 
     @DeleteMapping("{availabilityId}")
@@ -32,7 +45,7 @@ public class AvailabilityResource {
         final Optional<Availability> availability = service.findbyId(availabilityId);
 
         if (!availability.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            return ResponseEntity.noContent().build();
         }
 
         service.delete(availability.get());

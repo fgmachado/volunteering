@@ -1,12 +1,10 @@
 package ong.sitelgbt.volunteering.resource;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import ong.sitelgbt.volunteering.model.Voluntary;
 import ong.sitelgbt.volunteering.service.VoluntaryService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
