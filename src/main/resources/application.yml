@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost/postgres
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://ec2-54-172-219-218.compute-1.amazonaws.com/da4f93829aebbp
+    username: ptxhjwbadzygdd
+    password: e62b2e481610deefc422019e011aef63ad7598b1d79ed35dfa1c7aad8263b3eb
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 20000
