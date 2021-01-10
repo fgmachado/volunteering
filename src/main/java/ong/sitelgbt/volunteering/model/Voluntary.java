@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-public class Register {
+public class Voluntary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

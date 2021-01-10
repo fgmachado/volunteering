@@ -1,9 +1,7 @@
 package ong.sitelgbt.volunteering.resource;
 
 import lombok.RequiredArgsConstructor;
-import ong.sitelgbt.volunteering.model.Register;
 import ong.sitelgbt.volunteering.model.Team;
-import ong.sitelgbt.volunteering.service.RegisterService;
 import ong.sitelgbt.volunteering.service.TeamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

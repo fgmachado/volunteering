@@ -1,8 +1,8 @@
 package ong.sitelgbt.volunteering.resource;
 
 import lombok.RequiredArgsConstructor;
-import ong.sitelgbt.volunteering.model.Register;
-import ong.sitelgbt.volunteering.service.RegisterService;
+import ong.sitelgbt.volunteering.model.Voluntary;
+import ong.sitelgbt.volunteering.service.VoluntaryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,34 +12,34 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/registrations")
-public class RegisterResource {
+@RequestMapping("/volunteers")
+public class VoluntaryResource {
 
-    private final RegisterService service;
+    private final VoluntaryService service;
 
     @GetMapping
-    public List<Register> findAll() {
+    public List<Voluntary> findAll() {
         return service.findAll();
     }
 
     @GetMapping("{id}")
-    public Optional<Register> findById(@PathVariable("id") Long id) {
+    public Optional<Voluntary> findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
     @PostMapping
-    public Register add(@RequestBody Register register) {
-        return service.save(register);
+    public Voluntary add(@RequestBody Voluntary voluntary) {
+        return service.save(voluntary);
     }
 
     @PutMapping
-    public Register update(@RequestBody Register register) {
-        return service.save(register);
+    public Voluntary update(@RequestBody Voluntary voluntary) {
+        return service.save(voluntary);
     }
 
     @PatchMapping("{id}/disable")
-    public ResponseEntity<Register> deactivate(@PathVariable("id") Long id) {
-        final Optional<Register> register = service.findById(id);
+    public ResponseEntity<Voluntary> deactivate(@PathVariable("id") Long id) {
+        final Optional<Voluntary> register = service.findById(id);
 
         if (!register.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -50,7 +50,7 @@ public class RegisterResource {
 
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable("id") Long id) {
-        final Optional<Register> register = service.findById(id);
+        final Optional<Voluntary> register = service.findById(id);
 
         if (!register.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
