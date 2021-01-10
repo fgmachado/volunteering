@@ -41,7 +41,7 @@ public class RegisterResource {
     public ResponseEntity<Register> deactivate(@PathVariable("id") Long id) {
         final Optional<Register> register = service.findById(id);
 
-        if (register.isEmpty()) {
+        if (!register.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
@@ -52,7 +52,7 @@ public class RegisterResource {
     public ResponseEntity delete(@PathVariable("id") Long id) {
         final Optional<Register> register = service.findById(id);
 
-        if (register.isEmpty()) {
+        if (!register.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
